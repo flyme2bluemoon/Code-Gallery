@@ -1,0 +1,47 @@
+// sass --watch styles.scss:styles.css
+
+$main-color: #1DA1F2;
+$light-mode: #F5F8FA;
+$dark-mode: #14171A;
+
+body {
+    font-family: "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+}
+
+#top-header {
+    text-align: left;
+    padding-top: 10%;
+    padding-bottom: 50px;
+    padding-left: 10%;
+    background-color: $main-color;
+    color: $light-mode;
+    h1 {
+        font-size: 72px;
+        font-weight: bolder;
+    }
+    h2 {
+        font-weight: bold;
+    }
+}
+
+#projects-container {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#github-button {
+    bottom: 0;
+}
+
+.card {
+    margin: 10px;
+}
+
+hr {
+    border: none;
+    width: 65%;
+    text-align: left;
+    margin-left: 0;
+    height: 10px;
+  }
