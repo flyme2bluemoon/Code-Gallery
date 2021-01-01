@@ -1,6 +1,7 @@
 // sass --watch styles.scss:styles.css
 
 $main-color: #1DA1F2;
+$secondary-color: #67c5ff;
 $light-mode: #F5F8FA;
 $dark-mode: #14171A;
 
@@ -22,6 +23,22 @@ body {
     h2 {
         font-weight: bold;
     }
+    form {
+        padding-top: 30px;
+        input[type=text] {
+            width: 20%;
+            background-color: $secondary-color;
+            color: $light-mode;
+            transition: width 0.4s ease-in-out;
+            border-radius: 25px;
+        }
+        input[type=text]:focus {
+            width: 30%;
+        }
+        input::placeholder {
+            color: $light-mode;
+        }
+    }
 }
 
 #projects-container {
@@ -36,6 +53,7 @@ body {
 
 .card {
     margin: 10px;
+    width: 18rem;
 }
 
 hr {

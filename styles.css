@@ -17,6 +17,22 @@ body {
 #top-header h2 {
   font-weight: bold;
 }
+#top-header form {
+  padding-top: 30px;
+}
+#top-header form input[type=text] {
+  width: 20%;
+  background-color: #67c5ff;
+  color: #F5F8FA;
+  transition: width 0.4s ease-in-out;
+  border-radius: 25px;
+}
+#top-header form input[type=text]:focus {
+  width: 30%;
+}
+#top-header form input::placeholder {
+  color: #F5F8FA;
+}
 
 #projects-container {
   width: 80%;
@@ -30,6 +46,7 @@ body {
 
 .card {
   margin: 10px;
+  width: 18rem;
 }
 
 hr {

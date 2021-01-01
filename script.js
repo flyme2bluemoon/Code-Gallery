@@ -25,14 +25,14 @@ function get_repos_data(repos_url) {
             var response = JSON.parse(req.responseText);
             for (var i = 0; i < response.length; i++) {
                 var new_card = `
-                <div class="card border-success mb-3" style="width: 18rem;">
+                <div class="card border-success mb-3 repo-card" id="${response[i].name}-repo-card">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">${response[i].name}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">${response[i].full_name}</h6>
                         <hr class="${response[i].language}-bar">
                         <p class="card-text">${response[i].description}</p>
                         <p class="card-text"><small class="text-muted">${response[i].language}</small></p>
-                        <a href="${response[i].html_url}" class="card-link btn btn-dark mt-auto" id="github-button">GitHub</a>
+                        <a href="${response[i].html_url}" class="card-link btn btn-outline-dark mt-auto" id="github-button">GitHub</a>
                     </div>
                 </div>
                 `;
@@ -70,3 +70,17 @@ function get_language_color(language) {
 }
 
 get_user_data("flyme2bluemoon");
+
+function keyUpHandler() {
+    var search = document.getElementById("search-bar").value;
+    var repo_cards = document.getElementsByClassName("repo-card")
+    for (var i = 0; i < repo_cards.length; i++) {
+        if (repo_cards[i].id.toLowerCase().substring(0, repo_cards[i].id.length - 10).includes(search.toLowerCase())) {
+            repo_cards[i].style = "";
+        } else {
+            repo_cards[i].style = "display: none;";
+        }
+    }
+}
+
+document.addEventListener("keyup", keyUpHandler);
