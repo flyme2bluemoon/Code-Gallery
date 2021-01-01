@@ -1,6 +1,4 @@
-var username = "the_flying_donkey";
-var api_key = "2990dd852ff40cf94ae1073bdff1cb839a6620b4";
-var auth_header = "Basic " + btoa(username+":"+api_key);
+var auth_header = "Basic dGhlX2ZseWluZ19kb25rZXk6Mjk5MGRkODUyZmY0MGNmOTRhZTEwNzNiZGZmMWNiODM5YTY2MjBiNA==";
 
 function get_user_data(username) {
     var url = "https://api.github.com/users/" + username;
@@ -10,7 +8,6 @@ function get_user_data(username) {
     req.onreadystatechange = function() {
         if (req.readyState == 4 && req.status == 200) {
             var response = JSON.parse(req.responseText);
-            console.log(response);
             get_repos_data(response.repos_url);
         }
     }
@@ -26,14 +23,7 @@ function get_repos_data(repos_url) {
     req.onreadystatechange = function() {
         if (req.readyState == 4 && req.status == 200) {
             var response = JSON.parse(req.responseText);
-            console.log(response);
             for (var i = 0; i < response.length; i++) {
-                console.log(response[i].full_name);
-                console.log(response[i].description);
-                console.log(response[i].url);
-                console.log(response[i].html_url);
-                console.log(response[i].language);
-                get_language_color(response[i].language);
                 var new_card = `
                 <div class="card border-success mb-3" style="width: 18rem;">
                     <div class="card-body d-flex flex-column">
@@ -47,6 +37,7 @@ function get_repos_data(repos_url) {
                 </div>
                 `;
                 document.getElementById("card-holder").innerHTML += new_card;
+                get_language_color(response[i].language);
             }
         }
     }
@@ -63,7 +54,6 @@ function get_language_color(language) {
         if (req.readyState == 4 && req.status == 200) {
             var response = JSON.parse(req.responseText);
             if (response[language] != undefined) {
-                console.log(response[language].color);
                 for (var i = 0; i < document.getElementsByClassName(`${language}-bar`).length; i++) {
                     document.getElementsByClassName(`${language}-bar`)[i].style = `background-color: ${response[language].color};`;
                 }
