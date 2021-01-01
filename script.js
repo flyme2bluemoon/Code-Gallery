@@ -59,7 +59,7 @@ function get_language_color(language) {
                 }
             } else {
                 for (var i = 0; i < document.getElementsByClassName("null-bar").length; i++) {
-                    document.getElementsByClassName("null-bar")[i].style = `background-color: #1DA1F2;`;
+                    document.getElementsByClassName("null-bar")[i].style = `background-color: ${response["Markdown"].color};`;
                 }
             }
         }
